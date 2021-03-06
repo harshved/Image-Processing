@@ -1,31 +1,21 @@
 import cv2
-#import os
-#dataset = "dataset"
-#name = "champ"
 
 (width, height) = (130, 100)
-alg = "haarcascade_frontalface_default.xml"
-haar_cascade = cv2.CascadeClassifier(alg)
+face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
-cam = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0)
 
-count = 1
-while count < 100:
-    print(count)
-    _,img = cam.read()
+while cap.isOpened():
+    _, img = cap.read()
     grayImg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    face = haar_cascade.detectMultiScale(grayImg, 1.3, 4)
+    face = face_cascade.detectMultiScale(grayImg, 1.3, 4)
     for (x,y,w,h) in face:
         cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
-        #faceOnly = grayImg[y:y+h, x:x+w] #This is used for cropping the part
-        #resizeImg = cv2.resize(faceOnly, (width, height))
-        #cv2.imwrite("%s/%s.jpg" %(path, count),resizeImg)
-        count += 1
+
     cv2.imshow("FaceDetection",img)
-    key = cv2.waitKey(10)
-    if key == ord("q"):
+    if cv2.waitKey(1) & 0xFF == ord("q"):
         break
-print("Image Captured Successfully")
-cam.release()
+
+cap.release()
 cv2.destroyAllWindows()
 
