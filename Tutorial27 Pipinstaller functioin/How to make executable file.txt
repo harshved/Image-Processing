@@ -1,0 +1,21 @@
+#In command prompt first install PyInstaller :- 
+code : pip install pyinstaller
+
+#Copy the path were your file is located :-
+code : cd $path
+
+#Write the file name for which you want make .exe file :-
+code : pyinstaller --onefile MovingObjectDetection.py
+#HERE --onefile means it will wrap all the dependcy in one exe file only.
+
+#If you want to only open the file without the black window then :-
+code : pyinstaller --onefile -w MovingObjectDetection.py
+
+#How to make the exe file to installer file :-
+#Download software nullsoft scriptable install system from :- https://nsis.sourceforge.io/Download
+
+#Make the zip of folder containing the exe file :
+
+#Now, In the NSIS software after installation tap on : Install based on zip
+#Gave the path of the zip file which you made and than press Generate.
+#This generate a .exe installer file which you could share with anyone.
