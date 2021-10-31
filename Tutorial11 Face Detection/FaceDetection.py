@@ -1,3 +1,5 @@
+# Adding OpenCV Library
+
 import cv2
 
 (width, height) = (130, 100)
@@ -19,3 +21,4 @@ while cap.isOpened():
 cap.release()
 cv2.destroyAllWindows()
 
+# End of Program
